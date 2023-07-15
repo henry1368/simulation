@@ -8,7 +8,7 @@ void writeSysDeploymentToFile(const systemDeployData sys){
 	ofstream fout;
 	fout.open(file, ios_base::out | ios_base::app | ios_base::binary);
 	if (fout.is_open()){
-		fout.write((char*) &sys, sizeof systemDeployData);
+		fout.write((char*) &sys, sizeof(systemDeployData));
 	}
 
 	fout.close();

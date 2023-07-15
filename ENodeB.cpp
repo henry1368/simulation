@@ -134,7 +134,7 @@ ENodeB::GetUserEquipmentRecord (int idUE)
 		  return record;
 		}
 	}
-  return false;
+  return nullptr;
 }
 
 

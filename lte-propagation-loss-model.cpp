@@ -1,6 +1,6 @@
 
 
-
+#include <cmath>
 #include "lte-propagation-loss-model.h"
 #include "UserEquipment.h"
 #include "ENodeB.h"
@@ -993,7 +993,7 @@ void LtePropagationLossModel::generate_powers()
 		for (int i = 0; i < clusterNum; i++)
 		{
 			delay_clusters[i] = delay_clusters[i] / D_factor;
-			if (!_finite(abs(delay_clusters[i])))
+			if (!isfinite(abs(delay_clusters[i])))
 			{
 				cout << "第" << i << "条多径出现问题" << endl;
 				cout << "delay_path[i]=" << delay_clusters[i] << endl;
@@ -1392,7 +1392,7 @@ void LtePropagationLossModel::generate_XPR()
 
 double RandUni()
 {
-	return (double)(rand() + 1) / (RAND_MAX + 2);
+	return (double)(rand() + 1) / (0x7fff + 2);
 }
 
 

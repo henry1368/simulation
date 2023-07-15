@@ -1,7 +1,7 @@
 
 
 #include "MacQueue.h"
-#include "Application.h"
+#include "application.h"
 #include "NetworkNode.h"
 #include "NetworkManager.h"
 #include "simulator.h"

@@ -146,7 +146,7 @@ HeNodeB::GetUserEquipmentRecord(int idUE)
 			return record;
 		}
 	}
-	return false;
+	return nullptr;
 }
 
 
@@ -374,7 +374,7 @@ HeNodeB::Scheduling_and_DL_RB_Allocation(vector<UserEquipment*>* m_UEs)         
 			double HistoryAverageThroughput = 0;
 			if (index == 0)
 			{
-				HistoryAverageThroughput = ((double)rand()) / RAND_MAX;
+				HistoryAverageThroughput = ((double)rand()) / 0x7fff;
 			}
 			else
 			{

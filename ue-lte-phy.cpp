@@ -16,7 +16,7 @@
 #include "MacQueue.h"
 #include "EffectiveSINR.h"
 #include "BLERCurves.h"
-#include "Simulator.h"
+#include "simulator.h"
 #include "application.h"
 #include "Fountain.h"
 #include "CodeBook.h"
@@ -70,7 +70,7 @@ UeLtePhy::StartRx(PacketBurst* p)        //txSignal为接收所连接（小）基站的信号
 		double m_eesmSINR = EffectiveSINR::LTE_eesmSINReff(m_measuredSinr, m_mcsIndexForRx, Nss);   //输入的SINR为十进制，返回的dB形式
 		double m_bler = BLERCurves::LTE_getBLER(m_eesmSINR, m_mcsIndexForRx);             
 
-		double   random_value = ((double)rand()) / RAND_MAX;           //产生随机数,判断此次传输是否成功 
+		double   random_value = ((double)rand()) / 0x7fff;           //产生随机数,判断此次传输是否成功 
 
 
 		for (uint32_t i = 0; i < p->GetNPackets(); i++)
@@ -155,7 +155,7 @@ UeLtePhy::StartRx(PacketBurst* p)        //txSignal为接收所连接（小）基站的信号
 						cout << "收到的数据量为:" << m_packet->m_size << ",总数据量为" << PTR[index] << endl;// "bit,喷泉码包个数:" << Numofpak << endl;
 						//这一步根据曲线读出接包概率
 						double pob = Fountain_decode[Numofpak];
-						double Rm = ((double)rand()) / RAND_MAX;
+						double Rm = ((double)rand()) / 0x7fff;
 						if (Rm <= pob)
 						{
 							//解包成功
@@ -228,7 +228,7 @@ UeLtePhy::StartRx(PacketBurst* p)        //txSignal为接收所连接（小）基站的信号
 
 
 
-		double   random_value = ((double)rand()) / RAND_MAX;       //产生随机数,判断此次传输是否成功 
+		double   random_value = ((double)rand()) / 0x7fff;       //产生随机数,判断此次传输是否成功 
 
 
 		for (uint32_t i = 0; i < p->GetNPackets(); i++)
@@ -315,7 +315,7 @@ UeLtePhy::StartRx(PacketBurst* p)        //txSignal为接收所连接（小）基站的信号
 
 						//这一步根据曲线读出接包概率
 						double pob = Fountain_decode[Numofpak];
-						double Rm = ((double)rand()) / RAND_MAX;
+						double Rm = ((double)rand()) / 0x7fff;
 						if (Rm <= pob)
 						{
 							//解包成功

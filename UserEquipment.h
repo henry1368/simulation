@@ -13,7 +13,7 @@ typedef  int State;
 #include "ue-lte-phy.h"
 #include "ue-mac.h"
 
-#include "Application.h"
+#include "application.h"
 #include "messages.h"
 
 using namespace std;

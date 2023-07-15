@@ -27,7 +27,7 @@ double Random::Exponential(double lamda)
 {//产生服从指数分布的随机数
 	double f;
 	//	srand((unsigned int)time((time_t *)NULL));
-	f = ((double)rand() + 1) / (RAND_MAX + 1);
+	f = ((double)rand() + 1) / (0x7fff + 1);
 	return -log(1 - f) / lamda;
 }
 
@@ -36,7 +36,7 @@ double Random::Pareto(double a, double k,double max)
 {//产生服从帕托分布的随机数
 	double f;
 	//	srand((unsigned int)time((time_t *)NULL));
-	f = (double)rand() / RAND_MAX;
+	f = (double)rand() / 0x7fff;
 	f = pow(f, 1 / a);
 	f = k / f;
 	if (f > max)
@@ -52,10 +52,10 @@ double Random::Normal(double Mu, double Theta)
 	double u, t;
 	int i;
 	int n = 5000;
-	u = (double)rand() / RAND_MAX;
+	u = (double)rand() / 0x7fff;
 	for (i = 1; i<n; i++)
 	{
-		u = u + (double)rand() / RAND_MAX;
+		u = u + (double)rand() / 0x7fff;
 	}
 	double rr = n / 12;
 	t = (u - n / 2) / sqrt(rr);
@@ -79,7 +79,7 @@ double Random::FisherTippettRan(double a, double b)
 {
 	double x;
 	double y;
-	x = ((double)rand() + 1) / (RAND_MAX + 1);
+	x = ((double)rand() + 1) / (0x7fff + 1);
 	y = a - b*log(-log(x));
 	return y;
 

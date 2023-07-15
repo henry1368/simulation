@@ -140,8 +140,8 @@ ap_distribute(Position * ps, double rd)        //在中心位置为ps,半径为rd的圆内产
 {
 	double x, y, m, n;
 	//	srand((unsigned)time(NULL));
-	m = (double)rand() / (RAND_MAX)*rd;
-	n = (double)rand() / (RAND_MAX)* 2 * PI;
+	m = (double)rand() / (0x7fff)*rd;
+	n = (double)rand() / (0x7fff)* 2 * PI;
 	x = ps->GetPositionX() + m*cos(n);
 	y = ps->GetPositionY() + m*sin(n);;
 	Position* pos = new Position(x, y,ps->GetPositionZ());
@@ -151,8 +151,8 @@ ap_distribute(Position * ps, double rd)        //在中心位置为ps,半径为rd的圆内产
 Position*
 hexagon_distribute(Position * center_pos,double rd)        //在中心位置为ps的扇区六边形内利用割补法产生一个随机位置
 {
-	double 	Y = ((double)rand() / RAND_MAX*1.5 - 1)*rd / sqrt(3);
-	double 	X = ((double)rand() / RAND_MAX * 2 - 1)*rd / 2;        //[-0.5r,0.5r]
+	double 	Y = ((double)rand() / 0x7fff*1.5 - 1)*rd / sqrt(3);
+	double 	X = ((double)rand() / 0x7fff * 2 - 1)*rd / 2;        //[-0.5r,0.5r]
 	if (Y + sqrt(3.0) / 3 * X + rd / sqrt(3) < 0)                //判断是否处于要平移的左下三角形
 	{
 		X = X + rd / 2;
@@ -342,7 +342,7 @@ Init::Net_Init()    //根据场景进行拓扑生成和撒点,包括三大场景
 
 					if (strcmp(SCENARIO_type, "UMi") == 0)
 					{
-					double Rn = (double)rand() / RAND_MAX;
+					double Rn = (double)rand() / 0x7fff;
 					if (Rn > 0.5)
 						t = m_Outdoor;               //50% users outdoor(pedestrian users) and 50% of users indoors
 					else
@@ -361,7 +361,7 @@ Init::Net_Init()    //根据场景进行拓扑生成和撒点,包括三大场景
 
 					if (strcmp(SCENARIO_type, "SMa") == 0)
 					{
-						double Rn = (double)rand() / RAND_MAX;
+						double Rn = (double)rand() / 0x7fff;
 						if (Rn > 0.5)
 							t = m_Vehicle;          //50% users vehicles and 50% of users indoors
 						else
@@ -429,8 +429,8 @@ Init::Net_Init()    //根据场景进行拓扑生成和撒点,包括三大场景
 			//在房间内随机分布5个wifi
 			for (int i = 0; i < nb_totalAP; i++)
 			{
-				double	AP_center_X = ((double)rand() / RAND_MAX + i)*m_interval;
-				double  AP_center_Y = ((double)rand() / RAND_MAX) * 10;                     //[0,10]     
+				double	AP_center_X = ((double)rand() / 0x7fff + i)*m_interval;
+				double  AP_center_Y = ((double)rand() / 0x7fff) * 10;                     //[0,10]     
 				double  AP_center_Z = 1.5;
 				AP* ap = new AP(i, 0, new Position(AP_center_X, AP_center_Y, AP_center_Y));   //AP的分布
 				ap->GetWifiPhy()->SetwifiBandwidthManager(new wifi_BandwidthManager(WIFI_BANDWIDTH, i));
@@ -450,8 +450,8 @@ Init::Net_Init()    //根据场景进行拓扑生成和撒点,包括三大场景
 
 			for (int i = 0; i < nb_totalUe; i++)                    //ue均匀分布在2.9×20×10空间内
 			{
-				double	UE_X = ((double)rand() / RAND_MAX) * 20;
-				double	UE_Y = ((double)rand() / RAND_MAX) * 10;
+				double	UE_X = ((double)rand() / 0x7fff) * 20;
+				double	UE_Y = ((double)rand() / 0x7fff) * 10;
 				double	UE_Z = 1.5;
 				UserEquipment* user = new UserEquipment(i, new Position(UE_X, UE_Y, UE_Z), 0, NULL, NULL, NULL, new Mobility(SCENARIO_type, m_Indoor, 1));
 				user->SetPostate(m_Indoor);
@@ -570,8 +570,8 @@ Init::Net_Init()    //根据场景进行拓扑生成和撒点,包括三大场景
 				  for (int j = 0; j < 6*Ue_Perfloor; j++)          //10 UEs in each floor               Ue_Perfloor             
 				  {
 					  int floor = j / Ue_Perfloor;
-					  UE_X = ((double)rand() / RAND_MAX * 2 - 1) * 50 + x;
-					  UE_Y = ((double)rand() / RAND_MAX * 2 - 1) * 50 + y; //    
+					  UE_X = ((double)rand() / 0x7fff * 2 - 1) * 50 + x;
+					  UE_Y = ((double)rand() / 0x7fff * 2 - 1) * 50 + y; //    
 					  UE_Z = floor*3.5 + 1.5;
 					  UserEquipment* user = new UserEquipment(ID, new Position(UE_X, UE_Y, UE_Z), 0, NULL, NULL, NULL, new Mobility(SCENARIO_type, m_Indoor, 1));
 					  user->SetPostate(m_Indoor);
@@ -587,10 +587,10 @@ Init::Net_Init()    //根据场景进行拓扑生成和撒点,包括三大场景
 
 				  if (i < (nb_totalUe - 4 * 6 * Ue_Perfloor) / 2)
 				  {
-				    UE_X = ((double)rand() / RAND_MAX * 2 - 1) * 138;   //x【-138，138】       
-				    UE_Y = ((double)rand() / RAND_MAX * 2 - 1) * 9 ;    // y【-9，9】 
+				    UE_X = ((double)rand() / 0x7fff * 2 - 1) * 138;   //x【-138，138】       
+				    UE_Y = ((double)rand() / 0x7fff * 2 - 1) * 9 ;    // y【-9，9】 
 					UE_Z = 1.5;
-				    Mob->m_speedDirection = ((double)rand() / RAND_MAX * 2 - 1)>0 ? 0 : 180;    // 东西走向的用户移动方向为正东或正西 (随机取)
+				    Mob->m_speedDirection = ((double)rand() / 0x7fff * 2 - 1)>0 ? 0 : 180;    // 东西走向的用户移动方向为正东或正西 (随机取)
 					if (UE_X>69)
 						Mob->m_speedDirection = 180;
 					else if (UE_X<-69)
@@ -598,10 +598,10 @@ Init::Net_Init()    //根据场景进行拓扑生成和撒点,包括三大场景
 				  }
 				   else
 				  {
-					 double  UE_X = ((double)rand() / RAND_MAX * 2 - 1) * 9;     // x【-9，9】
-					 double  UE_Y = ((double)rand() / RAND_MAX * 2 - 1) * 138;   //y【-138，138】
+					 double  UE_X = ((double)rand() / 0x7fff * 2 - 1) * 9;     // x【-9，9】
+					 double  UE_Y = ((double)rand() / 0x7fff * 2 - 1) * 138;   //y【-138，138】
 					 UE_Z = 1.5;
-					 Mob->m_speedDirection = ((double)rand() / RAND_MAX * 2 - 1)>0 ? 90 : -90;    // 南北走向的用户移动方向为正南或正北 (随机取)
+					 Mob->m_speedDirection = ((double)rand() / 0x7fff * 2 - 1)>0 ? 90 : -90;    // 南北走向的用户移动方向为正南或正北 (随机取)
 					 if (UE_Y>69)
 						 Mob->m_speedDirection = -90;
 					 else if (UE_Y<-69)

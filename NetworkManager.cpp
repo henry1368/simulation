@@ -587,8 +587,8 @@ double Gaussrand()                    //产生高斯随机数
 
 	if (phase == 0) {
 		do {
-			double U1 = (double)rand() / RAND_MAX;
-			double U2 = (double)rand() / RAND_MAX;
+			double U1 = (double)rand() / 0x7fff;
+			double U2 = (double)rand() / 0x7fff;
 
 			V1 = 2 * U1 - 1;
 			V2 = 2 * U2 - 1;

@@ -3,7 +3,7 @@
 
 #include "NetworkNode.h"
 #include "stdlib.h"
-#include "Position.h"
+#include "position.h"
 
 NetworkNode::NetworkNode()
 {

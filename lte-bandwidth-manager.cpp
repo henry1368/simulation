@@ -1,4 +1,4 @@
-
+#include <cstring>
 #include "lte-bandwidth-manager.h"
 #include <stdio.h>
 #include <iostream>

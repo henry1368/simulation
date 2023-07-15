@@ -19,7 +19,7 @@
 #include "EffectiveSINR.h"
 #include "BLERCurves.h"
 #include "Fountain.h"
-#include "Simulator.h"
+#include "simulator.h"
 #include "application.h"
 #include <Eigen/Dense>
 using namespace Eigen;
@@ -83,7 +83,7 @@ UeWifiPhy::StartRx(PacketBurst* p)           //Ò»¸öÓÃ»§½ÓÊÕÊı¾İ°ü£¨¿ÉÒÔÊÇ¿çÒµÎñ»
 	double m_bler = BLERCurves::WIFI_getBLER(m_eesmSINR, m_mcsIndexForRx, Nss);             //Çó³ö×îÖÕÎó°üÂÊ
 
 //	m_bler = 0.001;
-	double   random_value = ((double)rand()) / RAND_MAX;           //²úÉúËæ»úÊı,ÅĞ¶Ï´Ë´Î´«ÊäÊÇ·ñ³É¹¦ 
+	double   random_value = ((double)rand()) / 0x7fff;           //²úÉúËæ»úÊı,ÅĞ¶Ï´Ë´Î´«ÊäÊÇ·ñ³É¹¦ 
 
 
 	for (uint32_t i=0; i < p->GetNPackets();i++)
@@ -168,7 +168,7 @@ UeWifiPhy::StartRx(PacketBurst* p)           //Ò»¸öÓÃ»§½ÓÊÕÊı¾İ°ü£¨¿ÉÒÔÊÇ¿çÒµÎñ»
 					cout << "ÊÕµ½µÄÊı¾İÁ¿Îª:" << m_packet->m_size << ",×ÜÊı¾İÁ¿Îª" << PTR[index] << endl;// "bit,ÅçÈªÂë°ü¸öÊı:" << Numofpak << endl;
 					//ÕâÒ»²½¸ù¾İÇúÏß¶Á³ö½Ó°ü¸ÅÂÊ
 					double pob = Fountain_decode[Numofpak];
-					double Rm = ((double)rand()) / RAND_MAX;
+					double Rm = ((double)rand()) / 0x7fff;
 					if (Rm <= pob)
 					{
 						//½â°ü³É¹¦

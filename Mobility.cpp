@@ -1,8 +1,8 @@
 
-
-
+#include <cmath>
+#include <cstring>
 #include "Mobility.h"
-#include "Simulator.h"
+#include "simulator.h"
 #include "position.h"
 #include "parameter.h"
 
@@ -30,43 +30,43 @@ Mobility::Mobility(char* str, Positionstate p, int m_move_index)
 	              if (strcmp(str, "UMi") == 0)
 				   {
 					   m_speed = 3;
-					   m_speedDirection = (double)rand() / RAND_MAX * 360 - 180; //位置和方向
+					   m_speedDirection = (double)rand() / 0x7fff * 360 - 180; //位置和方向
 				   }
 
 				   if (strcmp(str, "UMa") == 0)
 				   {         
 					   m_speed = 30;                        //100% of users outdoors in vehicles
-					   m_speedDirection = (double)rand() / RAND_MAX * 360 - 180;
+					   m_speedDirection = (double)rand() / 0x7fff * 360 - 180;
 				   }
 
 				   if (strcmp(str, "RMa") == 0)
 				   {				     
 					   m_speed = 120;                        //100% of users outdoors in high speed vehicles
-					   m_speedDirection = (double)rand() / RAND_MAX * 360 - 180;
+					   m_speedDirection = (double)rand() / 0x7fff * 360 - 180;
 				   }
 
 				   if (strcmp(str, "SMa") == 0)
 				   {
-					   double Rn = (double)rand() / RAND_MAX;    //50% users vehicles and 50% of users indoors
+					   double Rn = (double)rand() / 0x7fff;    //50% users vehicles and 50% of users indoors
 					   if (p== m_Vehicle)			            
 						   m_speed = 90;
 					   else if (p == m_Indoor)	
 						   m_speed = 3;
 
-					   m_speedDirection = (double)rand() / RAND_MAX * 360 - 180;
+					   m_speedDirection = (double)rand() / 0x7fff * 360 - 180;
 				   }
 
 				   if (strcmp(str, "TC1") == 0)        //室内场景
 				   {
 					   m_speed = 3;
-					   m_speedDirection = (double)rand() / RAND_MAX * 360 - 180;
+					   m_speedDirection = (double)rand() / 0x7fff * 360 - 180;
 				   }
 
 				   if (strcmp(str, "TC2") == 0)        //密集都市信息社会场景
 				   {
 
-					   m_speed = (double)rand() / RAND_MAX * 3; //【0，3】km/h
-					   m_speedDirection = (double)rand() / RAND_MAX * 360 - 180;
+					   m_speed = (double)rand() / 0x7fff * 3; //【0，3】km/h
+					   m_speedDirection = (double)rand() / 0x7fff * 360 - 180;
 				   }
 }
 

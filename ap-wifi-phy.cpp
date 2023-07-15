@@ -6,7 +6,7 @@
 
 #include "packet-burst.h"
 #include "AP.h"
-#include "Simulator.h"
+#include "simulator.h"
 #include "parameter.h"
 #include "wifi-phy.h"
 #include "DcfState_Cluster.h"

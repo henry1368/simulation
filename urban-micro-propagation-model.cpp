@@ -328,7 +328,7 @@ UMi_PropagationLossModel::Compute_AntennaGain(UserEquipment* m_src, NetworkNode*
 
 double RandUni_3()
 {
-	return (double)(rand() + 1) / (RAND_MAX + 2);
+	return (double)(rand() + 1) / (0x7fff + 2);
 }
 
 //产生服从标准正态分布的随机数

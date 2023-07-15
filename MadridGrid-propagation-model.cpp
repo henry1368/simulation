@@ -663,7 +663,7 @@ void C4_NLOS_Azimuth(UserEquipment* ms, ENodeB* bs, double * dist_out, double * 
 
 double RandUni_1()
 {
-	return (double)(rand() + 1) / (RAND_MAX + 2);
+	return (double)(rand() + 1) / (0x7fff + 2);
 }
 
 //产生服从标准正态分布的随机数

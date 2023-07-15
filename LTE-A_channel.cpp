@@ -1,5 +1,5 @@
 #include<cassert>
-#include "Lte-A_Channel.h"
+#include "LTE-A_channel.h"
 
 LteChannel::LteChannel()
 {

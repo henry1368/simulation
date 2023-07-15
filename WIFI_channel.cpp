@@ -1,5 +1,5 @@
 #include<cassert>
-#include "WIFI_Channel.h"
+#include "WIFI_channel.h"
 #include "string.h"
 #include "parameter.h"
 #include "wifi-propagation-loss-model.h"

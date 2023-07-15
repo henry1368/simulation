@@ -24,8 +24,8 @@ using namespace std;
 		U1 = (double)rand();
 		U2 = (double)rand();
 
-		U1 = U1 / RAND_MAX;
-		U2 = U2 / RAND_MAX;
+		U1 = U1 / 0x7fff;
+		U2 = U2 / 0x7fff;
 
 		V1 = 2 * U1 - 1;
 		V2 = 2 * U2 - 1;

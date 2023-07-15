@@ -2,7 +2,7 @@
 #include "DcfState_Cluster.h"
 #include "NetworkManager.h"
 #include "AP.h"
-#include "Simulator.h"
+#include "simulator.h"
 using namespace std;
 
 DcfManager* DcfManager::ptr = NULL;
